@@ -5,7 +5,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.Address;
-//import javax.mail.BodyPart;
+import javax.mail.BodyPart;
 import javax.mail.Folder;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -39,30 +39,30 @@ public class CheckMail {
                     System.out.println("From: "+a);
                     System.out.println("Subject: "+message.getSubject());
                     //System.out.println("Content: "+message.getContent());
-                    Multipart mp=(Multipart)message.getContent();
-                    System.out.println(mp.toString());
-                    //String cont=getText((Part) message.getContent());
-                    /*for(int i=0;i<mp.getCount();i++) {
-                    BodyPart bodyPart = mp.getBodyPart(i);
-                        //if (bodyPart.isMimeType("text/*")) {
+                    Multipart mp=(Multipart)message.getContent();                                        
+                    for(int i=0;i<mp.getCount();i++) {
+                        BodyPart bodyPart = mp.getBodyPart(i);
+                        if (bodyPart.isMimeType("text/*")) {
                         String cont = (String) bodyPart.getContent();
                         System.out.println("Content: "+cont);
-                        //}
-                    }*/
+                        }
+                    }
                     //System.out.println("Content: "+cont);
                     System.out.println("-----\n");
                 }
             }
             
+            inbox.close(true);
+            store.close();
+            
         } catch (NoSuchProviderException ex) {
             Logger.getLogger(CheckMail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MessagingException ex) {
-            Logger.getLogger(CheckMail.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (MessagingException | IOException ex) {
             Logger.getLogger(CheckMail.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
+    @SuppressWarnings("ResultOfObjectAllocationIgnored")
     public static void main(String args[]){
         new CheckMail();
     }

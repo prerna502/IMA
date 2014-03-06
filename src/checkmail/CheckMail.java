@@ -27,8 +27,8 @@ public class CheckMail {
             Store store=s.getStore("pop3");
             String server="pop.asia.secureserver.net";
             int port=110;
-            String user="priti@airec.co.in";
-            String pass="test123";
+            String user="";
+            String pass="";
             store.connect(server, port, user, pass);
             Folder inbox=store.getFolder("Inbox");
             inbox.open(Folder.READ_ONLY);

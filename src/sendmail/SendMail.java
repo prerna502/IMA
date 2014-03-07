@@ -20,10 +20,10 @@ public class SendMail {
                 host="smtpout.asia.secureserver.net";
 		//String user="binoydalal93@gmail.com";
                 //String user2="testingmyjavamail@yahoo.com";
-                user="priti@airec.co.in";
+                user="";
 		//String pass=".hack%//sign66";
                 //String pass2="Longlongroadon66!";
-                pass="test123";
+                pass="";
 		Properties p=System.getProperties();
                 //Properties p2=System.getProperties();
 		p.put("mail.smtp.starttls.enable", "true");
